@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:vk/src/common/constant/configuration.dart';
+
 /// [MaterialContext] is an entry point to the material context.
 ///
 /// This widget sets locales, themes and routing.
@@ -9,7 +11,7 @@ class MaterialContext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'VK',
+      title: Configuration.appTitle,
       debugShowCheckedModeBanner: false,
       // TODO(kboomska): implement localization
       localizationsDelegates: const <LocalizationsDelegate<Object?>>[],
