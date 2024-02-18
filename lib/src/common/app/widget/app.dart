@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:vk/src/common/app/widget/material_context.dart';
+
+/// [App] is an entry point to the application.
 class App extends StatelessWidget {
   const App({super.key});
 
+  // TODO(kboomska): initialization results contains initialized dependencies
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'VK',
-      debugShowCheckedModeBanner: false,
-      // TODO(kboomska): implement localization
-      localizationsDelegates: const <LocalizationsDelegate<Object?>>[],
-      // TODO(kboomska): implement theme
-      theme: ThemeData.light(),
-      home: const Placeholder(),
-      builder: (context, child) => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-        child: child ?? const SizedBox.shrink(),
-      ),
-    );
+    // TODO(kboomska): implement dependencies scope
+    return const MaterialContext();
   }
 }

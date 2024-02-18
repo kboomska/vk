@@ -1,15 +1,12 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
-
-import 'package:vk/src/common/app/widget/app.dart';
+import 'package:vk/src/common/app/logic/app_runner.dart';
 
 void main() {
+  // TODO(kboomska): implement logger
   runZonedGuarded(
-    () {
-      runApp(const App());
-    },
+    () => const AppRunner().initializeAndRun(),
     (error, stackTrace) {
       log(error.toString(), stackTrace: stackTrace);
     },
