@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:vk/src/common/app/widget/app.dart';
+import 'package:vk/src/feature/initialization/logic/initialization_processor.dart';
 
 /// A class which is responsible for initialization and running the app.
 final class AppRunner {
@@ -14,11 +15,14 @@ final class AppRunner {
     // Preserve splash screen
     binding.deferFirstFrame();
 
+    final initializationProcessor = InitializationProcessor();
+
     Future<void> initializeAndRun() async {
       try {
-        // TODO(kboomska): initialization before the application starts
+        final result = await initializationProcessor.initialize();
+        log(result.toString());
         // Attach this widget to the root of the tree.
-        runApp(const App());
+        runApp(App(result: result));
       } catch (error, stackTrace) {
         log(error.toString(), stackTrace: stackTrace);
         // TODO(kboomska): initialization failed screen

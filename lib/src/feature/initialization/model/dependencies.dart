@@ -1,13 +1,16 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Dependencies container
-base class Dependencies {
+final class Dependencies {
   const Dependencies({
     required this.sharedPreferences,
   });
 
   /// [SharedPreferences] instance, used to store Key-Value pairs.
   final SharedPreferences sharedPreferences;
+
+  @override
+  String toString() => '$SharedPreferences()';
 }
 
 /// Result of initialization
@@ -26,6 +29,6 @@ final class InitializationResult {
   @override
   String toString() => '$InitializationResult('
       'dependencies: $dependencies, '
-      'msSpent: $msSpent'
+      'spent: $msSpent ms'
       ')';
 }

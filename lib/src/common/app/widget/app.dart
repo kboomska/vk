@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
 import 'package:vk/src/common/app/widget/material_context.dart';
+import 'package:vk/src/feature/initialization/logic/initialization_processor.dart';
+import 'package:vk/src/feature/initialization/model/dependencies.dart';
+import 'package:vk/src/feature/initialization/widget/dependencies_scope.dart';
 
 /// [App] is an entry point to the application.
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({required this.result, super.key});
 
-  // TODO(kboomska): initialization results contains initialized dependencies
+  /// The initialization result from the [InitializationProcessor]
+  /// which contains initialized dependencies.
+  final InitializationResult result;
 
   @override
   Widget build(BuildContext context) {
-    // TODO(kboomska): implement dependencies scope
-    return const MaterialContext();
+    return DependenciesScope(
+      dependencies: result.dependencies,
+      child: const MaterialContext(),
+    );
   }
 }
