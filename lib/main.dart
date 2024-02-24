@@ -8,7 +8,7 @@ void main() {
   runZonedGuarded(
     () => const AppRunner().initializeAndRun(),
     (error, stackTrace) {
-      log(error.toString(), stackTrace: stackTrace);
+      log('Zone error: $error', error: error, stackTrace: stackTrace);
     },
   );
 }

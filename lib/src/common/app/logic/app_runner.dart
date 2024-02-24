@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:vk/src/common/app/widget/app.dart';
 import 'package:vk/src/feature/initialization/logic/initialization_processor.dart';
+import 'package:vk/src/feature/initialization/widget/initialization_failed_app.dart';
 
 /// A class which is responsible for initialization and running the app.
 final class AppRunner {
@@ -12,22 +13,31 @@ final class AppRunner {
   Future<void> initializeAndRun() async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
 
-    // Preserve splash screen
-    binding.deferFirstFrame();
-
     final initializationProcessor = InitializationProcessor();
 
     Future<void> initializeAndRun() async {
       try {
-        final result = await initializationProcessor.initialize();
+        // Preserve splash screen
+        binding.deferFirstFrame();
+
+        final result = await initializationProcessor.initialize().timeout(
+              const Duration(minutes: 2),
+            );
         log(result.toString());
+
         // Attach this widget to the root of the tree.
         runApp(App(result: result));
       } catch (error, stackTrace) {
-        log(error.toString(), stackTrace: stackTrace);
-        // TODO(kboomska): initialization failed screen
+        log('Initialization failed', error: error, stackTrace: stackTrace);
+        runApp(
+          InitializationFailedApp(
+            error: error,
+            stackTrace: stackTrace,
+            retryInitialization: initializeAndRun,
+          ),
+        );
       } finally {
-        // Allow rendering
+        // Closes splash screen, and show the app layout.
         binding.allowFirstFrame();
       }
     }
