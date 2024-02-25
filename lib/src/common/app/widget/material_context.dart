@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:vk/src/common/app/model/app_theme.dart';
 import 'package:vk/src/common/constant/configuration.dart';
+import 'package:vk/src/feature/home/widget/home_screen.dart';
 
 /// [MaterialContext] is an entry point to the material context.
 ///
@@ -16,8 +18,9 @@ class MaterialContext extends StatelessWidget {
       // TODO(kboomska): implement localization
       localizationsDelegates: const <LocalizationsDelegate<Object?>>[],
       // TODO(kboomska): implement theme
-      theme: ThemeData.light(useMaterial3: true),
-      home: const Placeholder(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: const HomeScreen(),
       builder: (context, child) => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
         child: child ?? const SizedBox.shrink(),

@@ -6,6 +6,8 @@ import 'package:vk/src/feature/initialization/model/dependencies.dart';
 
 /// A class which is responsible for processing initialization steps.
 class InitializationProcessor {
+  const InitializationProcessor();
+
   Future<Dependencies> _initDependencies() async {
     final sharedPreferences = await SharedPreferences.getInstance();
 
