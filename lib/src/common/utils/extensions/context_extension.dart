@@ -8,8 +8,8 @@ extension ContextExtension on BuildContext {
   /// or the widget goes away), this build context is rebuilt so that it can
   /// obtain new values from that widget.
   T? maybeOf<T extends InheritedWidget>({bool listen = true}) => listen
-  ? dependOnInheritedWidgetOfExactType<T>()
-  : getInheritedWidgetOfExactType<T>();
+      ? dependOnInheritedWidgetOfExactType<T>()
+      : getInheritedWidgetOfExactType<T>();
 
   /// Obtain the nearest widget of the given type T,
   /// which must be the type of a concrete [InheritedWidget] subclass,

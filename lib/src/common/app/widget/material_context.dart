@@ -12,14 +12,17 @@ class MaterialContext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.defaultTheme;
+
     return MaterialApp(
       title: Configuration.appTitle,
       debugShowCheckedModeBanner: false,
       // TODO(kboomska): implement localization
       localizationsDelegates: const <LocalizationsDelegate<Object?>>[],
       // TODO(kboomska): implement theme
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      theme: theme.lightTheme,
+      darkTheme: theme.darkTheme,
+      themeMode: theme.mode,
       home: const HomeScreen(),
       builder: (context, child) => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
