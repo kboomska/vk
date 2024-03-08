@@ -31,7 +31,7 @@ abstract base class PreferencesDao {
         sharedPreferences: _sharedPreferences,
       );
 
-  /// Obtain [Iterable<String>] entry from the preferences.
+  /// Obtain [Iterable\<String\>] entry from the preferences.
   PreferencesEntry<Iterable<String>> iterableStringEntry(String key) =>
       _PreferencesEntry<Iterable<String>>(
         key: key,
