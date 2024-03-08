@@ -13,7 +13,7 @@ final class AppRunner {
   Future<void> initializeAndRun() async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
 
-    final initializationProcessor = InitializationProcessor();
+    const initializationProcessor = InitializationProcessor();
 
     Future<void> initializeAndRun() async {
       try {
