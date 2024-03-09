@@ -50,6 +50,9 @@ final class _SettingsState$Error extends SettingsState {
   final Object cause;
 }
 
+/// Pattern matching for [SettingsState].
+typedef SettingsStateMatch<R, S extends SettingsState> = R Function(S state);
+
 /// Base class for [SettingsState].
 abstract base class _$SettingsStateBase {
   const _$SettingsStateBase({required this.appTheme});
@@ -60,8 +63,58 @@ abstract base class _$SettingsStateBase {
   /// The error message.
   abstract final Object? cause;
 
-  /// If an error has occured.
-  bool get hasError => cause != null;
+  /// Is in error state?
+  bool get isError => cause != null;
+
+  /// Is in progress state?
+  bool get isProcessing => maybeMap(
+        orElse: () => false,
+        processing: (_) => true,
+      );
+
+  /// Is in idle state?
+  bool get isIdle => maybeMap(
+        orElse: () => false,
+        idle: (_) => true,
+      );
+
+  /// Pattern matching for [SettingsState].
+  R map<R>({
+    required SettingsStateMatch<R, _SettingsState$Idle> idle,
+    required SettingsStateMatch<R, _SettingsState$Processing> processing,
+    required SettingsStateMatch<R, _SettingsState$Error> error,
+  }) =>
+      switch (this) {
+        _SettingsState$Idle s => idle(s),
+        _SettingsState$Processing s => processing(s),
+        _SettingsState$Error s => error(s),
+        _ => throw AssertionError(),
+      };
+
+  /// Pattern matching for [SettingsState].
+  R maybeMap<R>({
+    SettingsStateMatch<R, _SettingsState$Idle>? idle,
+    SettingsStateMatch<R, _SettingsState$Processing>? processing,
+    SettingsStateMatch<R, _SettingsState$Error>? error,
+    required R Function() orElse,
+  }) =>
+      map<R>(
+        idle: idle ?? (_) => orElse(),
+        processing: processing ?? (_) => orElse(),
+        error: error ?? (_) => orElse(),
+      );
+
+  /// Pattern matching for [SettingsState].
+  R? mapOrNull<R>({
+    SettingsStateMatch<R, _SettingsState$Idle>? idle,
+    SettingsStateMatch<R, _SettingsState$Processing>? processing,
+    SettingsStateMatch<R, _SettingsState$Error>? error,
+  }) =>
+      map<R?>(
+        idle: idle ?? (_) => null,
+        processing: processing ?? (_) => null,
+        error: error ?? (_) => null,
+      );
 
   @override
   bool operator ==(Object other) {
