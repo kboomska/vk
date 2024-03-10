@@ -19,12 +19,41 @@ final class _SettingsEvent$UpdateTheme extends SettingsEvent {
   String toString() => '$SettingsEvent.updateTheme(appTheme: $appTheme)';
 }
 
+/// Pattern matching for [SettingsEvent].
+typedef SettingsEventMatch<R, E extends SettingsEvent> = R Function(E event);
+
 /// Base class for [SettingsEvent].
 abstract base class _$SettingsEvent {
   const _$SettingsEvent({required this.appTheme});
 
   /// The new theme mode.
   final AppTheme appTheme;
+
+  /// Pattern matching for [SettingsEvent].
+  R map<R>({
+    required SettingsEventMatch<R, _SettingsEvent$UpdateTheme> updateTheme,
+  }) =>
+      switch (this) {
+        _SettingsEvent$UpdateTheme e => updateTheme(e),
+        _ => throw AssertionError(),
+      };
+
+  /// Pattern matching for [SettingsEvent].
+  R maybeMap<R>({
+    SettingsEventMatch<R, _SettingsEvent$UpdateTheme>? updateTheme,
+    required R Function() orElse,
+  }) =>
+      map<R>(
+        updateTheme: updateTheme ?? (_) => orElse(),
+      );
+
+  /// Pattern matching for [SettingsEvent].
+  R? mapOrNull<R>({
+    SettingsEventMatch<R, _SettingsEvent$UpdateTheme>? updateTheme,
+  }) =>
+      map<R?>(
+        updateTheme: updateTheme ?? (_) => null,
+      );
 
   @override
   bool operator ==(Object other) {
