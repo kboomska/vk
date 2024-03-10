@@ -1,4 +1,3 @@
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:vk/src/common/app/model/app_theme.dart';
@@ -18,7 +17,6 @@ final class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       (event, emit) => event.map(
         updateTheme: (event) => _updateTheme(event, emit),
       ),
-      transformer: sequential(),
     );
   }
 
