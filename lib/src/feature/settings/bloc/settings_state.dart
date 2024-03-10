@@ -131,7 +131,7 @@ abstract base class _$SettingsStateBase {
   @override
   String toString() {
     final buffer = StringBuffer()
-      ..write('SettingsState(')
+      ..write('$SettingsState(')
       ..write('appTheme: $appTheme');
     if (cause != null) buffer.write(', cause: $cause');
     buffer.write(')');
