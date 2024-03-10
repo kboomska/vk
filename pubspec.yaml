@@ -15,6 +15,10 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
+  # BLoC
+  flutter_bloc: ^8.1.4
+  bloc_concurrency: ^0.2.4
+
   # Persisting
   shared_preferences: ^2.2.2
 
