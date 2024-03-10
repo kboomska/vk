@@ -2,24 +2,24 @@ part of 'package:vk/src/feature/settings/bloc/settings_bloc.dart';
 
 /// States for the [SettingsBloc].
 sealed class SettingsState extends _$SettingsStateBase {
-  const SettingsState({required super.appTheme});
+  const SettingsState({super.appTheme});
 
   /// Idle state for the [SettingsBloc].
   const factory SettingsState.idle({
     /// The current theme mode.
-    required AppTheme appTheme,
+    AppTheme? appTheme,
   }) = _SettingsState$Idle;
 
   /// Processing state for the [SettingsBloc].
   const factory SettingsState.processing({
     /// The current theme mode.
-    required AppTheme appTheme,
+    AppTheme? appTheme,
   }) = _SettingsState$Processing;
 
   /// Error state for the [SettingsBloc].
   const factory SettingsState.error({
     /// The current theme mode.
-    required AppTheme appTheme,
+    AppTheme? appTheme,
 
     /// The error message.
     required Object cause,
@@ -28,7 +28,7 @@ sealed class SettingsState extends _$SettingsStateBase {
 
 /// Idling state.
 final class _SettingsState$Idle extends SettingsState {
-  const _SettingsState$Idle({required super.appTheme});
+  const _SettingsState$Idle({super.appTheme});
 
   @override
   Object? get cause => null;
@@ -36,7 +36,7 @@ final class _SettingsState$Idle extends SettingsState {
 
 /// Processing.
 final class _SettingsState$Processing extends SettingsState {
-  const _SettingsState$Processing({required super.appTheme});
+  const _SettingsState$Processing({super.appTheme});
 
   @override
   Object? get cause => null;
@@ -44,7 +44,7 @@ final class _SettingsState$Processing extends SettingsState {
 
 /// Error state.
 final class _SettingsState$Error extends SettingsState {
-  const _SettingsState$Error({required super.appTheme, required this.cause});
+  const _SettingsState$Error({super.appTheme, required this.cause});
 
   @override
   final Object cause;
@@ -55,10 +55,10 @@ typedef SettingsStateMatch<R, S extends SettingsState> = R Function(S state);
 
 /// Base class for [SettingsState].
 abstract base class _$SettingsStateBase {
-  const _$SettingsStateBase({required this.appTheme});
+  const _$SettingsStateBase({this.appTheme});
 
   /// The current theme mode.
-  final AppTheme appTheme;
+  final AppTheme? appTheme;
 
   /// The error message.
   abstract final Object? cause;
