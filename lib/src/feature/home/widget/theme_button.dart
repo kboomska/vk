@@ -32,8 +32,13 @@ class ThemeButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
           ),
           padding: const EdgeInsets.all(25.0),
-          child: const Center(
-            child: Text('TAP'),
+          child: Center(
+            child: Text(
+              'TAP',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
           ),
         ),
       ),

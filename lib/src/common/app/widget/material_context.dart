@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:vk/src/common/app/model/app_theme.dart';
 import 'package:vk/src/common/constant/configuration.dart';
 import 'package:vk/src/feature/home/widget/home_screen.dart';
+import 'package:vk/src/feature/settings/widget/settings_scope.dart';
 
 /// [MaterialContext] is an entry point to the material context.
 ///
@@ -12,14 +12,13 @@ class MaterialContext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.defaultTheme;
+    final theme = SettingsScope.themeOf(context).theme;
 
     return MaterialApp(
       title: Configuration.appTitle,
       debugShowCheckedModeBanner: false,
       // TODO(kboomska): implement localization
       localizationsDelegates: const <LocalizationsDelegate<Object?>>[],
-      // TODO(kboomska): implement theme
       theme: theme.lightTheme,
       darkTheme: theme.darkTheme,
       themeMode: theme.mode,

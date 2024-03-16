@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:flutter/material.dart';
 
+import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:vk/src/common/app/widget/app.dart';
