@@ -13,6 +13,9 @@ abstract interface class ThemeScopeController {
 
   /// Set the theme mode to [themeMode].
   void setThemeMode(ThemeMode themeMode);
+
+  /// Switching [ThemeMode] between [ThemeMode.light] and [ThemeMode.dark].
+  void switchThemeMode();
 }
 
 /// A controller that holds and operates the app settings.
@@ -68,6 +71,17 @@ class _SettingsScopeState extends State<SettingsScope>
   @override
   AppTheme get theme =>
       widget.settingsBloc.state.appTheme ?? AppTheme.defaultTheme;
+
+  @override
+  void switchThemeMode() {
+    final currentTheme = theme.computeTheme();
+
+    if (currentTheme == theme.darkTheme) {
+      setThemeMode(ThemeMode.light);
+    } else {
+      setThemeMode(ThemeMode.dark);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
