@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:vk/src/feature/home/widget/theme_button.dart';
+import 'package:vk/src/feature/settings/widget/settings_scope.dart';
 
 /// Simple HomeScreen Widget
 class HomeScreen extends StatelessWidget {
@@ -8,13 +9,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: colorScheme.background,
       body: Center(
         child: ThemeButton(
-          primaryColor: Theme.of(context).colorScheme.primary,
-          secondaryColor: Theme.of(context).colorScheme.secondary,
-          onTap: () {},
+          primaryColor: colorScheme.primary,
+          secondaryColor: colorScheme.secondary,
+          onTap: () => SettingsScope.themeOf(context).switchThemeMode(),
         ),
       ),
     );

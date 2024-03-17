@@ -52,6 +52,9 @@ final class AppTheme {
   }
 
   @override
+  String toString() => mode.toString();
+
+  @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppTheme &&
