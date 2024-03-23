@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:vk/src/common/app/model/app_theme.dart';
+import 'package:vk/src/feature/app/model/app_theme.dart';
 import 'package:vk/src/feature/settings/data/theme_repository.dart';
 
 part 'package:vk/src/feature/settings/bloc/settings_event.dart';
