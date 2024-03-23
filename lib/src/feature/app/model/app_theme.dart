@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:vk/src/common/theme/color_schemes.dart';
+
 /// A class that holds properties needed
 /// to build a [ThemeData] for the app.
 final class AppTheme {
@@ -10,25 +12,13 @@ final class AppTheme {
   final ThemeMode mode;
 
   /// The dark [ThemeData] for this [AppTheme].
-  final ThemeData darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    useMaterial3: true,
-    colorScheme: ColorScheme.dark(
-      background: Colors.grey.shade900,
-      primary: Colors.grey.shade800,
-      secondary: Colors.grey.shade700,
-    ),
+  final darkThemeData = defaultThemeData.copyWith(
+    colorScheme: darkColorScheme,
   );
 
   /// The light [ThemeData] for this [AppTheme].
-  final ThemeData lightTheme = ThemeData(
-    brightness: Brightness.light,
-    useMaterial3: true,
-    colorScheme: ColorScheme.light(
-      background: Colors.grey.shade400,
-      primary: Colors.grey.shade300,
-      secondary: Colors.grey.shade200,
-    ),
+  final lightThemeData = defaultThemeData.copyWith(
+    colorScheme: lightColorScheme,
   );
 
   /// The default [AppTheme].
@@ -38,16 +28,16 @@ final class AppTheme {
 
   /// The [ThemeData] for this [AppTheme].
   /// This is computed based on the [mode].
-  ThemeData computeTheme() {
+  ThemeData computeThemeData() {
     switch (mode) {
       case ThemeMode.light:
-        return lightTheme;
+        return lightThemeData;
       case ThemeMode.dark:
-        return darkTheme;
+        return darkThemeData;
       case ThemeMode.system:
         return PlatformDispatcher.instance.platformBrightness == Brightness.dark
-            ? darkTheme
-            : lightTheme;
+            ? darkThemeData
+            : lightThemeData;
     }
   }
 

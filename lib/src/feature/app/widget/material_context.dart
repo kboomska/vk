@@ -19,8 +19,8 @@ class MaterialContext extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // TODO(kboomska): implement localization
       localizationsDelegates: const <LocalizationsDelegate<Object?>>[],
-      theme: theme.lightTheme,
-      darkTheme: theme.darkTheme,
+      theme: theme.lightThemeData,
+      darkTheme: theme.darkThemeData,
       themeMode: theme.mode,
       home: const HomeScreen(),
       builder: (context, child) => MediaQuery(

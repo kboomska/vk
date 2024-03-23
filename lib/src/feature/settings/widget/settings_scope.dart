@@ -74,9 +74,9 @@ class _SettingsScopeState extends State<SettingsScope>
 
   @override
   void switchThemeMode() {
-    final currentTheme = theme.computeTheme();
+    final currentThemeData = theme.computeThemeData();
 
-    if (currentTheme == theme.darkTheme) {
+    if (currentThemeData == theme.darkThemeData) {
       setThemeMode(ThemeMode.light);
     } else {
       setThemeMode(ThemeMode.dark);
