@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:vk/src/common/app/widget/material_context.dart';
+import 'package:vk/src/feature/app/widget/material_context.dart';
 import 'package:vk/src/feature/initialization/logic/initialization_processor.dart';
 import 'package:vk/src/feature/initialization/model/dependencies.dart';
 import 'package:vk/src/feature/initialization/widget/dependencies_scope.dart';

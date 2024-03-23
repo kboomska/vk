@@ -1,4 +1,4 @@
-import 'package:vk/src/common/app/model/app_theme.dart';
+import 'package:vk/src/feature/app/model/app_theme.dart';
 import 'package:vk/src/feature/settings/data/theme_datasource.dart';
 
 /// Theme repository that persists and retrieves theme information.

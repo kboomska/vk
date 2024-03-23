@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:vk/src/common/app/model/app_theme.dart';
 import 'package:vk/src/common/utils/extensions/context_extension.dart';
+import 'package:vk/src/feature/app/model/app_theme.dart';
 import 'package:vk/src/feature/settings/bloc/settings_bloc.dart';
 
 /// A controller that holds and operates the app theme.

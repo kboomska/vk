@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:vk/src/common/app/widget/app.dart';
 import 'package:vk/src/common/utils/bloc_observer.dart';
+import 'package:vk/src/feature/app/widget/app.dart';
 import 'package:vk/src/feature/initialization/logic/initialization_processor.dart';
 import 'package:vk/src/feature/initialization/widget/initialization_failed_app.dart';
 
